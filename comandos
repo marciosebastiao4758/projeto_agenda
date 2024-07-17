@@ -24,5 +24,54 @@ venv
  # Criando uma aplicação no django:
  python manage.py startapp contact
 
+ # criando as migrações do banco de dados
+ python manage.py makemigrations
+ python manage.py migrate
+
+ # criando um superusuário
+ python manage.py createsuperuser
+ python manage.py changepassword marcio
+ 
+ # Documentação do django:
+ models: https://docs.djangoproject.com/pt-br/4.2/topics/db/models/
+fields: https://docs.djangoproject.com/pt-br/4.2/ref/models/fields/#field-choices
+
+# Mostrando os campos no admin:
+class contactAdmin(admin.ModelAdmin)
+  list_display = lista ou tupla
+
+# Configurando os arquivos stático e de média:
+# No settings:
+STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR/"base_static"]
+
+STATIC_ROOT = BASE_DIR/"static" # collectstatic
+
+
+MEDIA_URL  = "/media/"
+MEDIA_ROOT = BASE_DIR/"media"
+
+# Na Url raiz:
+from django.contrib import admin
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("contact.urls")),
+]
+
+if settings.DEBUG:
+    urlpatterns +=  static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+# coletando os arquivos estáticos:
+python manage.py collectstatic
+    
+
+
+
+
+
 
 
