@@ -1,0 +1,21 @@
+ # iniciar o projeto Django:
+pthon3 -m venv venv
+source venv/bin/activate
+pip install django
+django-admin startproject project .
+
+# Configurando Git:
+git config --global user.name "marciosebastiao4758"
+git confit --global user.email "marciosebastiao302626@hotmail.com"
+git config --global init.defaultBranch main
+
+# Configuração do gitignore:
+.vscode
+venv
+ 
+ # inciar o git
+ git init
+ git add.
+ git commit -m "mensagem"
+
+
