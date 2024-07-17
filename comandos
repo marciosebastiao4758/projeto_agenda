@@ -20,6 +20,9 @@ venv
  # assistir um vídeo no youtube Git + Github + ssh(básico de Otávio Miranda)
  git branch -M main
  git remote add origin https://github.com/marciosebastiao4758/projeto_agenda.git
- 
+
+ # Criando uma aplicação no django:
+ python manage.py startapp contact
+
 
 
