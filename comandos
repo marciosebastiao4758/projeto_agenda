@@ -36,6 +36,7 @@ venv
  models: https://docs.djangoproject.com/pt-br/4.2/topics/db/models/
 fields: https://docs.djangoproject.com/pt-br/4.2/ref/models/fields/#field-choices
 Model_Meta_options: https://docs.djangoproject.com/pt-br/4.2/ref/models/options/
+fields_lookups = https://docs.djangoproject.com/en/4.2/ref/models/querysets/#field-lookups
 
 # Mostrando os campos no admin:
 class contactAdmin(admin.ModelAdmin)
