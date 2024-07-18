@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
 </head>
 <body>
-    <h1>Arquivo global/base.html</h1>
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>

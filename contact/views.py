@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import Contact, Category
 
 def index(request):
-    return render(request, "contact/index.html")
+    contacts = Contact.objects.all()
+    return render(request, "contact/index.html", {"contacts":contacts})
