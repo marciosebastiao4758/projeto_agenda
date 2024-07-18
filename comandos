@@ -35,10 +35,12 @@ venv
  # Documentação do django:
  models: https://docs.djangoproject.com/pt-br/4.2/topics/db/models/
 fields: https://docs.djangoproject.com/pt-br/4.2/ref/models/fields/#field-choices
+Model_Meta_options: https://docs.djangoproject.com/pt-br/4.2/ref/models/options/
 
 # Mostrando os campos no admin:
 class contactAdmin(admin.ModelAdmin)
   list_display = lista ou tupla
+  ex: list_display = ["campo A", "campo B",]
 
 # Configurando os arquivos stático e de média:
 # No settings:
