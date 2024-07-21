@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Contact, Category
 from django.db.models import Q
+# from django.core.paginator import Paginator (fazer paginação depois)
+from .forms import ContactForm
 
 
 def index(request):
@@ -40,3 +42,21 @@ def search(request):
     print(contacts.query)
         
     return render(request, "contact/index.html", {"contacts":contacts})
+
+def create(request):
+    if request.method == "POST":
+        # print(request.method)
+        # print(request.POST.get("first_name")) 
+        # print(request.POST.get("last_name")) 
+        # print(request.POST.get("phone")) 
+        form =  ContactForm(request.POST)
+        if form.is_valid():
+            # contact = form.save(commit=False)
+            # contact.save()
+            form.save()
+            return redirect("contact:create")
+            
+            print("O formulário é válido")
+    form = ContactForm()
+        
+    return render(request, "contact/contact_create.html", {"form":form})

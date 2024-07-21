@@ -18,7 +18,7 @@ class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
-    email = models.CharField(max_length=250, blank=True)
+    email = models.EmailField(max_length=250, blank=True)
     Created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField()
     show = models.BooleanField(default=True)
