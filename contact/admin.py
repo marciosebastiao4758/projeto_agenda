@@ -3,7 +3,8 @@ from .models import Contact, Category
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ["id","first_name", "last_name", "phone","category","owner",]
+    list_display = ["id","first_name", "last_name", "phone",
+                    "category","owner","picture",]
     
     ordering = ["-id"]
     
