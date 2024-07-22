@@ -4,6 +4,7 @@ from django.db.models import Q
 # from django.core.paginator import Paginator (fazer paginação depois)
 from .forms import ContactForm, RegisterForm
 from django.urls import reverse
+from django.contrib import messages
 
 
 def index(request):
@@ -115,10 +116,13 @@ def delete(request, contact_id):
     
 def register(request):
     form = RegisterForm()
+    # messages.info(request, "um texto qualquer")
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Usuário Cadastrado com Sucesso!")
+            return redirect("contact:index")
     
         
     return render(request, "contact/register.html", {'form':form})

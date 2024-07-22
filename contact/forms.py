@@ -23,6 +23,7 @@ class RegisterForm(UserCreationForm):
     first_name = forms.CharField(required=True,min_length=3)
     last_name = forms.CharField(required=True,min_length=3)
     email = forms.EmailField()
+    
     class Meta:
         model = User
         fields = ["first_name", "last_name","email",

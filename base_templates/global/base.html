@@ -37,6 +37,15 @@
             </form>
         </div>
     </header>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message {{ messages.tags}}">
+        {{ message }}
+    </div>
+   
+    {% endfor %}
+    {% endif %}
     <main class="content">
         {% block content %}
         {% endblock %}
