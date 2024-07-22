@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Contact, Category
 from django.db.models import Q
 # from django.core.paginator import Paginator (fazer paginação depois)
-from .forms import ContactForm
+from .forms import ContactForm, RegisterForm
 from django.urls import reverse
 
 
@@ -111,6 +111,17 @@ def delete(request, contact_id):
     
     return render(request, "contact/contact.html", 
                   {"contact":contact, "confirmation":confirmation,})
+    
+    
+def register(request):
+    form = RegisterForm()
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+    
+        
+    return render(request, "contact/register.html", {'form':form})
     
         
     
