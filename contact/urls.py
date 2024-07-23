@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, contact, search, create, update, delete, register
+from .views import index, contact, search, create, update, delete, register, login_view, logout_view
 
 app_name = "contact"
 
@@ -11,4 +11,6 @@ urlpatterns = [
     path("contact/update<int:contact_id>/", update, name="update"),
     path("contact/delete<int:contact_id>/", delete, name="delete"),
     path("user/create", register, name="register"),
+    path("user/login", login_view, name="login"),
+    path("user/logout", logout_view, name="logout"),
 ]
