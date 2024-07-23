@@ -1,20 +1,21 @@
-
 {% load static %}
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
 </head>
+
 <body>
     <header class="header">
         <h1 class="header-heading">
             <a href="{% url 'contact:index' %}">
                 Agenda
             </a>
-        </h1> 
+        </h1>
         <nav class="menu">
             <ul class="menu-list">
                 <li class="menu-item">
@@ -28,12 +29,12 @@
                     </a>
                 </li>
             </ul>
-        </nav> 
-        
+        </nav>
+
         <div class="search">
             <form action="" method="GET">
-                <input type="search" class="search-input" 
-                placeholder="search" id="search" name="q" value="{{ request.GET.q.strip }}">
+                <input type="search" class="search-input" placeholder="search" id="search" name="q"
+                    value="{{ request.GET.q.strip }}">
             </form>
         </div>
     </header>
@@ -43,7 +44,7 @@
     <div class="message {{ messages.tags}}">
         {{ message }}
     </div>
-   
+
     {% endfor %}
     {% endif %}
     <main class="content">
@@ -51,4 +52,5 @@
         {% endblock %}
     </main>
 </body>
+
 </html>

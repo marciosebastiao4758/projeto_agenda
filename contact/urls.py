@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import index, contact, search, create, update, delete, register, login_view, logout_view
+from .views import index, contact, search, create, update,\
+delete, register, login_view, logout_view
 
 app_name = "contact"
 

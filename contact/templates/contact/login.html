@@ -7,19 +7,19 @@
     {% if user.is_authenticated %}
     <p>
         Você fez login como {{ user.username }}
-        Clique <a href="{% url 'contact:logout' %}"> 
+        Clique <a href="{% url 'contact:logout' %}">
             para sair
         </a>
     </p>
     {% endif %}
 
-    <form action="{{ form_action }}" method="POST" >
+    <form action="{{ form_action }}" method="POST">
         {% csrf_token %}
         <div class="form-content">
             {% for field in form %}
             <div class="form-group">
                 <label for="{{field.id_for_label}}">{{field.label}}</label>
-                {{ field }}                
+                {{ field }}
             </div>
             {% endfor %}
         </div>

@@ -149,5 +149,6 @@ def login_view(request):
         
 def logout_view(request):
     auth.logout(request)
+    messages.success(request, "Vocẽ fez logout do sistema!")
     return redirect("contact:login")
     
