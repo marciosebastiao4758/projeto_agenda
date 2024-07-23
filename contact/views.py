@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Contact, Category
 from django.db.models import Q
 # from django.core.paginator import Paginator (fazer paginação depois)
-from .forms import ContactForm, RegisterForm
+from .forms import ContactForm, RegisterForm, RegisterUpdateForm
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -33,6 +34,8 @@ def search(request):
             # printando a consulta sql no terminal
     # print("search_value", search_value)
     # filtrando os contatos pelo campo show=True e ordenando pelo id e fatiando
+    
+    
     contacts = Contact.objects\
         .filter(show=True)\
             .filter(
@@ -47,6 +50,8 @@ def search(request):
         
     return render(request, "contact/index.html", {"contacts":contacts})
 
+
+@login_required(login_url="contact:login")
 def create(request):
     form_action = reverse("contact:create")
     if request.method == "POST":
@@ -82,7 +87,7 @@ def create(request):
         
     
 
-
+@login_required(login_url="contact:login")
 def update(request, contact_id):
     contact = get_object_or_404(Contact, pk = contact_id, show=True)
     form_action = reverse('contact:update', args=(contact_id,))
@@ -104,7 +109,7 @@ def update(request, contact_id):
             }
     return render(request, "contact/contact_create.html", context)
 
-
+@login_required(login_url="contact:login")
 def delete(request, contact_id):
     contact = get_object_or_404(Contact, pk = contact_id, show=True)
     confirmation = request.POST.get("confirmation", "no")
@@ -146,9 +151,21 @@ def login_view(request):
             
     return render(request, "contact/login.html", {'form':form})
     
-        
+@login_required(login_url="contact:login")        
 def logout_view(request):
     auth.logout(request)
     messages.success(request, "Vocẽ fez logout do sistema!")
     return redirect("contact:login")
     
+    
+def user_update(request):
+    form = RegisterUpdateForm(instance=request.user)
+    
+    if request.method == "POST":
+        form = RegisterUpdateForm(data=request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("contact:user_update")       
+               
+    
+    return render(request, "contact/user_update.html", {'form':form})
